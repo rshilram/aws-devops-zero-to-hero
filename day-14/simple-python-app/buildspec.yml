@@ -24,6 +24,14 @@ phases:
   post_build:
     commands:
       - echo "Build completed successfully!"
+
+  steps:
+    - name: publish to dockerhub
+      users: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: rshilram/next 
 artifacts:
   files:
     - '**/*'
